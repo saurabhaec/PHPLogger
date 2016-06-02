@@ -1,10 +1,14 @@
 <?php
+/**
+ * @auther Saurabh Chandra Patel
+ * @link https://github.com/saurabhaec/PHPLogger/ for PHP Log report
+ * @license https://github.com/saurabhaec/PHPLogger/blob/master/LICENSE GNU GENERAL PUBLIC LICENSE
+ */
 
-// Scoial hook
 class PHPLogger implements \SplSubject {
 
 	/**
-	 * [$name description]
+	 * [$name log file name ]
 	 * @var [type]
 	 */
 	private $filename;
@@ -40,8 +44,8 @@ class PHPLogger implements \SplSubject {
 
 	/**
 	 * [__set description]
-	 * @param [type] $pro   [description]
-	 * @param [type] $value [description]
+	 * @param [string] $pro   [description]
+	 * @param [string] $value [description]
 	 */
 	public function __set($pro, $value) {
 		return $this->$pro = $value;
@@ -51,7 +55,7 @@ class PHPLogger implements \SplSubject {
 	/**
 	 * [attach description]
 	 * @param  \SplObserver $observer [description]
-	 * @return [type]                 [description]
+	 * @return [null]                 [description]
 	 */
 	public function attach(\SplObserver $observer) {
 		$this->observers[] = $observer;
@@ -61,7 +65,7 @@ class PHPLogger implements \SplSubject {
 	/**
 	 * [detach description]
 	 * @param  \SplObserver $observer [description]
-	 * @return [type]                 [description]
+	 * @return [null]                 [description]
 	 */
 	public function detach(\SplObserver $observer) {
 
@@ -78,7 +82,7 @@ class PHPLogger implements \SplSubject {
 	//notify observers(or some of them)
 	/**
 	 * [notify description]
-	 * @return [type] [description]
+	 * @return [null] [description]
 	 */
 	public function notify() {
 		foreach ($this->observers as $value) {
@@ -97,7 +101,7 @@ class Reportlog implements SplObserver {
 	private $action;
 	/**
 	 * [__construct description]
-	 * @param iSocialShare $socialmedia [description]
+	 * @param  $action  [report identifiers]
 	 */
 	public function __construct($action) {
 		$this->action = $action;
